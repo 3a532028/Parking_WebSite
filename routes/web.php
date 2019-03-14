@@ -31,3 +31,5 @@ Route::get('/account',function (){
 Route::get('/camera',function (){
     return view('camera',['body'=>'reportsPage','title' => 'camera']);
 })->name('camera');
+
+Route::get('/influxdb/api','InfluxdbController@index');
