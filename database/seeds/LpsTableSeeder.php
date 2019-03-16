@@ -11,15 +11,38 @@ class LpsTableSeeder extends Seeder
      */
     public function run()
     {
+        for($i=0;$i<50;$i++){
+            DB::table('lps')->insert([
+                'LP'=>$this->random_lp(),
+                'enter_t'=>date('YmdHis'),
+                'out_t'=>date('YmdHis')+200,
+                'is_white'=>random_int(0,1),
+                'status'=>'已離開'
+            ]);
+
+            DB::table('lps')->insert([
+                'LP'=>$this->random_lp(),
+                'enter_t'=>date('YmdHis'),
+                'is_white'=>random_int(0,1),
+                'status'=>'已進入'
+            ]);
+        }
         //
-        $lps=\App\Lps::all();
-        $lps->insert([
-            'LP'=>str_random(3),
-            'enter_t'=>date ("Y- m - d / H : i : s"),
-            'out_t'=>'',
-            'is_white'=>random_int(0,1),
-            'status'=>''
-        ]);
+
+
+    }
+
+    public function random_lp(){
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $lps='';
+        for($i=0;$i<3;$i++){
+            $string = random_int(0,25);
+            $lps=$lps.$characters[$string];
+        }
+        for ($j=0;$j<4;$j++){
+            $lps=$lps.random_int(0,9);
+        }
+        return $lps;
 
     }
 }
