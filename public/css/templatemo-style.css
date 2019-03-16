@@ -223,13 +223,17 @@ thead {
   border-radius: 50%;
   margin-top: -3px;
 }
-.moving {
+.parking {
   background-color: #9be64d;
   box-shadow: 0 0 8px #9be64d, inset 0 0 8px #9be64d;
 }
-.pending {
-  background-color: #efc54b;
+.unparking {
+  background-color: lightgray;
   box-shadow: 0 0 8px #efc54b, inset 0 0 8px #efc54b;
+}
+.cancelled2 {
+    background-color: #fd7e14;
+    box-shadow: 0 0 8px #da534f, inset 0 0 8px #da534f;
 }
 .cancelled {
   background-color: #da534f;
