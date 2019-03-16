@@ -17,10 +17,15 @@
                     var is_white = [];
                     var status = [];
                     var iswhite=[];
+                    var hours=[];
+                    var mins=[];
                     for (i in data) {
                         LP.push(data[i].LP);
+                        data[i].enter_t
                         enter_t.push(data[i].enter_t);
                         out_t.push(data[i].out_t);
+                        hours.push(parseInt((new Date() - new Date(data[i].enter_t))/1000/3600));
+                        mins.push(parseInt((new Date() - new Date(data[i].enter_t))/1000/60-parseInt((new Date() - new Date(data[i].enter_t))/1000/60/60)*60));
                         is_white.push(data[i].is_white);
                         status.push(data[i].status);
                         iswhite.push(data[i].is_white);
@@ -40,7 +45,7 @@
                         str+=
                             "                </div>"+status[i]+"\n" +
                             "            </td>\n" +
-                            "            <td><b>"+enter_t[i]+"</b></td>\n" +
+                            "            <td><b>"+hours[i]+"小時"+mins[i]+"分鐘</b></td>\n" +
                             "            <td><b>"+enter_t[i]+"</b></td>\n" +
                             "            <td><b>"+out_t[i]+"</b></td>\n" +
                             "            <td>\n";
