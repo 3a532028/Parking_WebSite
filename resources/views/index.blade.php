@@ -109,160 +109,75 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-12 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-                    <h2 class="tm-block-title">Orders List</h2>
+                    <h2 class="tm-block-title">車輛管理</h2>
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">ORDER NO.</th>
-                            <th scope="col">STATUS</th>
-                            <th scope="col">OPERATORS</th>
-                            <th scope="col">LOCATION</th>
-                            <th scope="col">DISTANCE</th>
-                            <th scope="col">START DATE</th>
-                            <th scope="col">EST DELIVERY DUE</th>
+                            <th scope="col">車牌號碼</th>
+                            <th scope="col">最近進入時間</th>
+                            <th scope="col">最後離開時間</th>
+                            <th scope="col">白名單</th>
+                            <th scope="col">狀態</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($lps as $lp)
                         <tr>
-                            <th scope="row"><b>#122349</b></th>
+                            <th scope="row"><b>{{ $lp->LP }}</b></th>
                             <td>
-                                <div class="tm-status-circle moving">
-                                </div>Moving
+                                {{--<div class="tm-status-circle cancelled">--}}
+                                {{--</div>Moving--}}
+                                {{ $lp->enter_t }}
                             </td>
-                            <td><b>Oliver Trag</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>485 km</b></td>
-                            <td>16:00, 12 NOV 2018</td>
-                            <td>08:00, 18 NOV 2018</td>
+                            <td><b>{{ $lp->out_t }}</b></td>
+                            <td><b>
+                                    @php
+                                        if($lp->is_white==0){
+                                        echo '<div class="tm-status-circle cancelled"></div>';
+                                        echo $lp->is_white;
+                                        }
+                                    @endphp
+                                </b></td>
+                            <td><b>{{ $lp->status }}</b></td>
                         </tr>
-                        <tr>
-                            <th scope="row"><b>#122348</b></th>
-                            <td>
-                                <div class="tm-status-circle pending">
-                                </div>Pending
-                            </td>
-                            <td><b>Jacob Miller</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>360 km</b></td>
-                            <td>11:00, 10 NOV 2018</td>
-                            <td>04:00, 14 NOV 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122347</b></th>
-                            <td>
-                                <div class="tm-status-circle cancelled">
-                                </div>Cancelled
-                            </td>
-                            <td><b>George Wilson</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>340 km</b></td>
-                            <td>12:00, 22 NOV 2018</td>
-                            <td>06:00, 28 NOV 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122346</b></th>
-                            <td>
-                                <div class="tm-status-circle moving">
-                                </div>Moving
-                            </td>
-                            <td><b>William Aung</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>218 km</b></td>
-                            <td>15:00, 10 NOV 2018</td>
-                            <td>09:00, 14 NOV 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122345</b></th>
-                            <td>
-                                <div class="tm-status-circle pending">
-                                </div>Pending
-                            </td>
-                            <td><b>Harry Ryan</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>280 km</b></td>
-                            <td>15:00, 11 NOV 2018</td>
-                            <td>09:00, 17 NOV 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122344</b></th>
-                            <td>
-                                <div class="tm-status-circle pending">
-                                </div>Pending
-                            </td>
-                            <td><b>Michael Jones</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>218 km</b></td>
-                            <td>18:00, 12 OCT 2018</td>
-                            <td>06:00, 18 OCT 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122343</b></th>
-                            <td>
-                                <div class="tm-status-circle moving">
-                                </div>Moving
-                            </td>
-                            <td><b>Timmy Davis</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>218 km</b></td>
-                            <td>12:00, 10 OCT 2018</td>
-                            <td>08:00, 18 OCT 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122342</b></th>
-                            <td>
-                                <div class="tm-status-circle moving">
-                                </div>Moving
-                            </td>
-                            <td><b>Oscar Phyo</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>420 km</b></td>
-                            <td>15:30, 06 OCT 2018</td>
-                            <td>09:30, 16 OCT 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122341</b></th>
-                            <td>
-                                <div class="tm-status-circle moving">
-                                </div>Moving
-                            </td>
-                            <td><b>Charlie Brown</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>300 km</b></td>
-                            <td>11:00, 10 OCT 2018</td>
-                            <td>03:00, 14 OCT 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122340</b></th>
-                            <td>
-                                <div class="tm-status-circle cancelled">
-                                </div>Cancelled
-                            </td>
-                            <td><b>Wilson Cookies</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>218 km</b></td>
-                            <td>17:30, 12 OCT 2018</td>
-                            <td>08:30, 22 OCT 2018</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><b>#122339</b></th>
-                            <td>
-                                <div class="tm-status-circle moving">
-                                </div>Moving
-                            </td>
-                            <td><b>Richard Clamon</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>150 km</b></td>
-                            <td>15:00, 12 OCT 2018</td>
-                            <td>09:20, 26 OCT 2018</td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <div class="col-6 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                    <h2 class="tm-block-title">當前進入車輛</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">進入時間</th>
+                            <th scope="col">車牌號碼</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <th scope="row" id="inter-time">
+                                    times
+                                </th>
+                                <td id="inter-lp">
+                                    lp
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
         </div>
     </div>
+</div>
 @endsection
 
 @section('script')
@@ -295,5 +210,32 @@
             updateBarChart();
         });
     })
+</script>
+<script>
+        var getplate=function(){
+            $.get('http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
+                function (data) {
+                    // console.log(data.results[0].series[0].values[0][1]);
+                    document.getElementById("inter-time").innerHTML=data.results[0].series[0].values[0][0];
+                    document.getElementById("inter-lp").innerHTML=data.results[0].series[0].values[0][1];
+                }
+            );
+        };
+
+        var interval=1000;
+        var doAjax = function() {
+            $.ajax({
+                url: 'http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
+                success: function(data){
+                    document.getElementById("inter-time").innerHTML=data.results[0].series[0].values[0][0];
+                    document.getElementById("inter-lp").innerHTML=data.results[0].series[0].values[0][1];
+                },
+                complete: function () {
+                    // Schedule the next
+                    setTimeout(doAjax, interval);
+                }
+            });
+        };
+        doAjax();
 </script>
 @endsection

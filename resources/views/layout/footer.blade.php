@@ -3,6 +3,7 @@
     No.57, Sec. 2, Zhongshan Rd., Taiping Dist., Taichung 41170, Taiwan (R.O.C.)<br>
     電話: <a href="http://www.ncut.edu.tw/ncut/phone/">(04)23924505 (分機表)</a>FAX:(04) 23923363 <a href="http://voip.tanet.edu.tw/sq_in.asp" title="網路電話">TANet 98110000 </a><br>
 </div>
+
 <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
         <p class="text-center text-white mb-0 px-4 small">
@@ -12,3 +13,14 @@
         </p>
     </div>
 </footer>
+
+{{--<footer class="tm-footer row tm-mt-small">--}}
+    {{--<div class="col-12 font-weight-light">--}}
+        {{--<p class="text-center text-white mb-0 px-4 small">--}}
+            {{--Copyright &copy; <b>2018</b> All rights reserved.--}}
+
+            {{--Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>--}}
+        {{--</p>--}}
+    {{--</div>--}}
+{{--</footer>--}}
+

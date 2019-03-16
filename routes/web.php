@@ -22,6 +22,8 @@ Route::get('/{fun}','AdminlpsController@sort');
 Route::get('/search/{Lp}','AdminlpsController@sort');
 });
 
+
+
 Route::get('/log_in', function () {
     return view('log_in',['body'=>'reportsPage','title'=>'log_in']);
 })->name('log_in');
@@ -43,4 +45,8 @@ Route::get('/camera',function (){
     return view('camera',['body'=>'reportsPage','title' => 'camera']);
 })->name('camera');
 
+// allen route
+Route::get('/api','InfluxdbController@testdb');
 Route::get('/influxdb/api','InfluxdbController@index');
+
+Route::get('/dashboard','IndexController@index');
