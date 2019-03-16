@@ -18,20 +18,12 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
 
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('iswhite')}}">
                         <i class="far fa-file-alt"></i>
-                        <span>
-                                    Reports <i class="fas fa-angle-down"></i>
-                                </span>
+                        黑白名單
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Daily Report</a>
-                        <a class="dropdown-item" href="#">Weekly Report</a>
-                        <a class="dropdown-item" href="#">Yearly Report</a>
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('products')}}">
@@ -40,9 +32,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<<<<<<< HEAD
-                    <a class="nav-link" href="{{route('iswhite')}}">
-=======
                     <a class="nav-link" href="{{route('camera')}}">
                         <i class="fas fa-video"></i>
                         Camera
@@ -50,9 +39,8 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('account')}}">
->>>>>>> 4d732e81bd370aae51208c4d11006e701f26aad3
                         <i class="far fa-user"></i>
-                        黑白名單
+                        帳戶設定
                     </a>
                 </li>
                 <li class="nav-item dropdown">

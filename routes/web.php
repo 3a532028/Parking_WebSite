@@ -11,15 +11,17 @@
 |
 */
 
-<<<<<<< HEAD
 Route::get('/', function () {
     return view('test');
 });
+// 黑白名單
+Route::group(['prefix'=>'iswhite'],function (){
+Route::get('/','AdminlpsController@index')->name('iswhite');
+Route::get('/seletall','AdminlpsController@seletall');
+Route::get('/{fun}','AdminlpsController@sort');
+Route::get('/search/{Lp}','AdminlpsController@sort');
+});
 
-Route::get('/iswhite',['as'=>'iswhite',function (){
-   return view ('iswhite');
-}]);
-=======
 Route::get('/log_in', function () {
     return view('log_in',['body'=>'reportsPage','title'=>'log_in']);
 })->name('log_in');
@@ -42,4 +44,3 @@ Route::get('/camera',function (){
 })->name('camera');
 
 Route::get('/influxdb/api','InfluxdbController@index');
->>>>>>> 4d732e81bd370aae51208c4d11006e701f26aad3

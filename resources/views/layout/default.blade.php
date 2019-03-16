@@ -28,7 +28,6 @@
     @show
 </div>
 
-<<<<<<< HEAD
 {{--<footer class="footer navbar-fixed-bottom">--}}
     {{--@include('layout.footer')--}}
 {{--</footer>--}}
@@ -45,7 +44,6 @@
         $('.navbar.easy-sidebar').removeClass('toggled');
     });
 </script>
-=======
 <footer class="footer navbar-fixed-bottom">
     @include('layout.footer')
 </footer>
@@ -57,6 +55,5 @@
 @section('script')
     內容~內容~內容
 @show
->>>>>>> 4d732e81bd370aae51208c4d11006e701f26aad3
 </body>
 </html>
