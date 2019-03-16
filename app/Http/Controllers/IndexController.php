@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lps;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -10,6 +11,9 @@ class IndexController extends Controller
 
     public function index()
     {
-        return view('index',['title'=>'index','body'=>'reportsPage']);
+        $lps=Lps::all();
+//        return $lps;
+        return view('index',['title'=>'index','body'=>'reportsPage','lps'=>$lps]);
     }
+
 }

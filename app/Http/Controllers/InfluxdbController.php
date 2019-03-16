@@ -17,7 +17,7 @@ class InfluxdbController extends Controller
     public function testdb()
     {
         $client=new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://192.168.5.17:8086/query?q=select+*+from+%22test%22&db=LP',['verify' => false]);
+        $res = $client->request('GET', 'http://192.168.5.17:8086/query?q=select+*+from+test&db=LP&pretty=true',['verify' => false]);
         $response = json_decode($res->getBody()->getContents(), true);
         $dbname=$response['results'][0]['series'][0]['name'];
         $columns=$response['results'][0]['series'][0]['columns'];
@@ -25,4 +25,6 @@ class InfluxdbController extends Controller
 //        return $values[0];
         return view('testinfluxdb',['columns'=>$columns,"values"=>$values]);
     }
+
+
 }

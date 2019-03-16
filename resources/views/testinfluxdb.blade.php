@@ -4,6 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {{--laravel CSRF 防禦--}}
+    <meta name="_token" content="{{ csrf_token() }}"/>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -39,10 +41,43 @@
 </div>
 
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<!-- https://jquery.com/download/ -->
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
+<!-- https://momentjs.com/ -->
+<script src="{{ asset('js/Chart.min.js') }}"></script>
+<!-- http://www.chartjs.org/docs/latest/ -->
+<script src="{{ asset('js/tooplate-scripts.js') }}"></script>
+
+<script>
+    var doajax =function(){
+        jQuery.ajax({
+            type: 'GET',
+            url: 'http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+            success: function(data){
+                console.log(data);
+            },
+            error: function(xhr, type){
+                alert('Ajax error!')
+            }
+        });
+    };
+
+    var getplate=function(){
+        $.get('http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
+            function (data) {
+                console.log(data.results[0].series[0].values[0][1]);
+                alert(data.results[0].series[0].values[0][1]);
+            }
+        );
+    };
+
+    getplate();
+</script>
 </body>
 </html>

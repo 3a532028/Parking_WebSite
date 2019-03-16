@@ -124,22 +124,60 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($lps as $lp)
                         <tr>
-                            <th scope="row"><b>#122349</b></th>
+                            <th scope="row"><b>{{ $lp->LP }}</b></th>
                             <td>
-                                <div class="tm-status-circle cancelled">
-                                </div>Moving
+                                {{--<div class="tm-status-circle cancelled">--}}
+                                {{--</div>Moving--}}
+                                {{ $lp->enter_t }}
                             </td>
-                            <td><b>Oliver Trag</b></td>
-                            <td><b>London, UK</b></td>
-                            <td><b>485 km</b></td>
+                            <td><b>{{ $lp->out_t }}</b></td>
+                            <td><b>
+                                    @php
+                                        if($lp->is_white==0){
+                                        echo '<div class="tm-status-circle cancelled"></div>';
+                                        echo $lp->is_white;
+                                        }
+                                    @endphp
+                                </b></td>
+                            <td><b>{{ $lp->status }}</b></td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <div class="col-6 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                    <h2 class="tm-block-title">當前進入車輛</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">進入時間</th>
+                            <th scope="col">車牌號碼</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <th scope="row" id="inter-time">
+                                    times
+                                </th>
+                                <td id="inter-lp">
+                                    lp
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
         </div>
     </div>
+</div>
 @endsection
 
 @section('script')
@@ -172,5 +210,32 @@
             updateBarChart();
         });
     })
+</script>
+<script>
+        var getplate=function(){
+            $.get('http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
+                function (data) {
+                    // console.log(data.results[0].series[0].values[0][1]);
+                    document.getElementById("inter-time").innerHTML=data.results[0].series[0].values[0][0];
+                    document.getElementById("inter-lp").innerHTML=data.results[0].series[0].values[0][1];
+                }
+            );
+        };
+
+        var interval=1000;
+        var doAjax = function() {
+            $.ajax({
+                url: 'http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
+                success: function(data){
+                    document.getElementById("inter-time").innerHTML=data.results[0].series[0].values[0][0];
+                    document.getElementById("inter-lp").innerHTML=data.results[0].series[0].values[0][1];
+                },
+                complete: function () {
+                    // Schedule the next
+                    setTimeout(doAjax, interval);
+                }
+            });
+        };
+        doAjax();
 </script>
 @endsection
