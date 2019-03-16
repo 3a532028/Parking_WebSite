@@ -38,9 +38,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="accounts.html">
+                    <a class="nav-link" href="{{route('iswhite')}}">
                         <i class="far fa-user"></i>
-                        Accounts
+                        黑白名單
                     </a>
                 </li>
                 <li class="nav-item dropdown">

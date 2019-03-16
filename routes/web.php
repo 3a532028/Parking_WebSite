@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('test');
 });
+
+Route::get('/iswhite',['as'=>'iswhite',function (){
+   return view ('iswhite');
+}]);
