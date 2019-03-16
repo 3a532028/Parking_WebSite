@@ -32,4 +32,4 @@ Route::get('/camera',function (){
     return view('camera',['body'=>'reportsPage','title' => 'camera']);
 })->name('camera');
 
-Route::get('/influxdb/api','InfluxdbController@index');
+Route::get('/api','InfluxdbController@testdb');
