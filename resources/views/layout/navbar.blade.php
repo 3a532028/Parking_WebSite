@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{ route('index') }}">
             <h1 class="tm-site-title mb-0">智慧停車場管理系統</h1>
         </a>
         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -40,9 +40,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link" href="{{route('iswhite')}}">
-=======
+
                     <a class="nav-link" href="{{route('camera')}}">
                         <i class="fas fa-video"></i>
                         Camera
@@ -50,7 +49,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('account')}}">
->>>>>>> 4d732e81bd370aae51208c4d11006e701f26aad3
                         <i class="far fa-user"></i>
                         黑白名單
                     </a>
