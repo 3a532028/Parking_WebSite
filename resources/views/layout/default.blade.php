@@ -30,9 +30,6 @@
     @show
 </div>
 
-<footer class="footer navbar-fixed-bottom">
-    @include('layout.footer')
-</footer>
 
 <script>
     //easy-sidebar-toggle-right
