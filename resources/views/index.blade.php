@@ -1,5 +1,5 @@
 @extends('layout.default')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 @section('content')
 <div class="" id="home">
     <div class="container">
@@ -229,6 +229,7 @@
                 success: function(data){
                     document.getElementById("inter-time").innerHTML=data.results[0].series[0].values[0][0];
                     document.getElementById("inter-lp").innerHTML=data.results[0].series[0].values[0][1];
+                    console.log(innerHTML=data.results[0].series[0].values[0][1]);
                 },
                 complete: function () {
                     // Schedule the next

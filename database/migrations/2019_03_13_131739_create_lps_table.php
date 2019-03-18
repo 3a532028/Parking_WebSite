@@ -17,8 +17,8 @@ class CreateLpsTable extends Migration
 //            $table->bigIncrements('id');
 //            $table->timestamps();
             $table->string('LP');  //車牌號碼
-            $table->dateTime('enter_t'); //進入時間
-            $table->dateTime('out_t');   //出去時間
+            $table->dateTime('enter_t')->nullable(); //進入時間
+            $table->dateTime('out_t')->nullable();   //出去時間
             $table->boolean('is_white'); //黑白名單
             $table->string('status');  //停車狀態
         });
