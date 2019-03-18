@@ -157,6 +157,7 @@
                         <tr>
                             <th scope="col">進入時間</th>
                             <th scope="col">車牌號碼</th>
+                            <th scope="col">快照</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -168,11 +169,43 @@
                                 <td id="inter-lp">
                                     lp
                                 </td>
+                                <td>
+                                    <img id="inter-img" src="">
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <div class="col-6 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                    <h2 class="tm-block-title">當前離開車輛</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">離開時間</th>
+                            <th scope="col">車牌號碼</th>
+                            <th scope="col">快照</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+
+                            <th scope="row" id="inter-time">
+                                times
+                            </th>
+                            <td id="inter-lp">
+                                lp
+                            </td>
+                            <td>
+                                <img id="inter-img" src="">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
 
 
         </div>
@@ -212,16 +245,6 @@
     })
 </script>
 <script>
-        var getplate=function(){
-            $.get('http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
-                function (data) {
-                    // console.log(data.results[0].series[0].values[0][1]);
-                    document.getElementById("inter-time").innerHTML=data.results[0].series[0].values[0][0];
-                    document.getElementById("inter-lp").innerHTML=data.results[0].series[0].values[0][1];
-                }
-            );
-        };
-
         var interval=1000;
         var doAjax = function() {
             $.ajax({
@@ -237,6 +260,24 @@
                 }
             });
         };
-        doAjax();
+
+        var getplate=function(){
+            $.ajax({
+               url: 'http://192.168.5.17:8086/query?q=select+last(plate)%2C*+from+%22result%22&db=mydb&pretty=true',
+               success:function (data) {
+                   var time=data.results[0].series[0].values[0][0];
+                   var img=data.results[0].series[0].values[0][1];
+                   var lp=data.results[0].series[0].values[0][3];
+                   document.getElementById("inter-time").innerHTML=time.split(".")[0];
+                   document.getElementById('inter-img').src='http://192.168.5.53:8001/result?filename='+img;
+                   document.getElementById("inter-lp").innerHTML=lp;
+               },
+                complete: function () {
+                    // Schedule the next
+                    setTimeout(getplate, interval);
+                }
+            });
+        };
+        getplate();
 </script>
 @endsection
