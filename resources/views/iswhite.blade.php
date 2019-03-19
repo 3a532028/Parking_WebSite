@@ -44,11 +44,22 @@
                         else if(status[i]=="黑名單"){str+="<div id=\"status\" class=\"tm-status-circle cancelled2\">"}
                         str+=
                             "                </div>"+status[i]+"\n" +
-                            "            </td>\n" +
-                            "            <td><b>"+hours[i]+"小時"+mins[i]+"分鐘</b></td>\n" +
-                            "            <td><b>"+enter_t[i]+"</b></td>\n" +
-                            "            <td><b>"+out_t[i]+"</b></td>\n" +
-                            "            <td>\n";
+                            "            </td>\n";
+                        if(!(enter_t[i]==null) && (hours[i]>0)){
+                            str+="<td><b>"+hours[i]+"小時"+mins[i]+"分鐘</b></td>\n" +
+                                " <td><b>"+enter_t[i]+"</b></td>\n";
+                        }
+                        else if(!(enter_t[i]==null)){
+                            str+="<td><b>"+mins[i]+"分鐘</b></td>\n" +
+                                " <td><b>"+enter_t[i]+"</b></td>\n";
+                        }
+                        else {
+                            str+="<td><b></b></td>\n" +
+                                " <td><b></b></td>\n";
+                        }
+
+                        str+="            <td><b>"+out_t[i]+"</b></td>\n" +
+                             "            <td>\n";
                         if (iswhite[i]){str+="<input class=\"btn btn-info rounded\" type=\"button\" value=\"白名單\" style=\"font-size: 12pt;height:auto;width: 150px;text-align: center;font-weight:bold;\">";}
                         else {str+="<input onclick=\"unban(\'"+LP[i]+"\')\" class=\"btn btn-dark rounded\" type=\"button\" value=\"取消黑名單\" style=\"font-size: 12pt;height:auto;width: 150px;text-align: center;font-weight:bold;\">";}
                         str+= "</td>\n" +
