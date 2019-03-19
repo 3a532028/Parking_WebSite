@@ -14,8 +14,8 @@ class CreateLpsTable extends Migration
     public function up()
     {
         Schema::create('lps', function (Blueprint $table) {
-//            $table->bigIncrements('id');
-//            $table->timestamps();
+            $table->bigIncrements('id');
+            $table->timestamps();
             $table->string('LP');  //車牌號碼
             $table->dateTime('enter_t')->nullable(); //進入時間
             $table->dateTime('out_t')->nullable();   //出去時間

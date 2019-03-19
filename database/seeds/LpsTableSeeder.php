@@ -11,11 +11,12 @@ class LpsTableSeeder extends Seeder
      */
     public function run()
     {
+        date_default_timezone_set('Asia/Taipei');
         for($i=0;$i<1;$i++){
             DB::table('lps')->insert([
                 'LP'=>$this->random_lp(),
 //                'enter_t'=>date('YmdHis'),
-                'out_t'=>date('YmdHis')+200,  //離開時間
+                'out_t'=>date('YmdHis'),  //離開時間
                 'is_white'=>1,  //白名單
                 'status'=>'未進場'
             ]);
@@ -31,7 +32,7 @@ class LpsTableSeeder extends Seeder
 
             DB::table('lps')->insert([
                 'LP'=>$this->random_lp(),
-                'out_t'=>date('YmdHis')-3600,  //上次離開時間
+                'out_t'=>date('YmdHis'),  //上次離開時間
                 'is_white'=>0,   //黑名單
                 'status'=>'黑名單'
             ]);

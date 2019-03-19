@@ -50,7 +50,7 @@
                             "            <td><b>"+out_t[i]+"</b></td>\n" +
                             "            <td>\n";
                         if (iswhite[i]){str+="<input class=\"btn btn-info rounded\" type=\"button\" value=\"白名單\" style=\"font-size: 12pt;height:auto;width: 150px;text-align: center;font-weight:bold;\">";}
-                        else {str+="<input class=\"btn btn-dark rounded\" type=\"button\" value=\"取消黑名單\" style=\"font-size: 12pt;height:auto;width: 150px;text-align: center;font-weight:bold;\">";}
+                        else {str+="<input onclick=\"unban(\'"+LP[i]+"\')\" class=\"btn btn-dark rounded\" type=\"button\" value=\"取消黑名單\" style=\"font-size: 12pt;height:auto;width: 150px;text-align: center;font-weight:bold;\">";}
                         str+= "</td>\n" +
                             "</tr>";
                     }
@@ -61,54 +61,7 @@
         }
         $(document).ready(function(){ajaxget()});
     </script>
-    <script>
-        var doAjax = function() {
-        $.ajax({
-            type: 'get',
-            url: 'http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
-            dataType: 'Json',
-            success: function (data) {
-                console.log(data.results[0].series[0].values[0][1],data.results[0].series[0].values[0][0]);
-                check(data.results[0].series[0].values[0][1],data.results[0].series[0].values[0][0]);
-            }
-        })};
-        function check(text,time)
-        {
-            var url='{{url('iswhite/search')}}'+'/'+text;
-            $.ajax({
-                type: 'get',
-                url: url,
-                dataType: 'Json',
-                success: function (data) {
-                    for (i in data) {
-                        if ((data[i].status == '已進場') && (new Date(time).getHours() != new Date(data[i].enter_t).getHours()) &&(new Date(time).getMinutes() != new Date(data[i].enter_t).getMinutes())) {
-                            // 檢查狀態、進場小時數、分鐘數，以防止重複寫入資料庫
-                            console.log(data[i].LP, '準備退場');
-                            // set status =>'未進場' enter_t => null  out_t => new Date(time)
-                            console.log(new Date(time).getHours(),'$',new Date(data[i].enter_t).getHours());
-                        }
-                        else if (data[i].status == '未進場'){
-                            console.log(data[i].LP, '準備進場');
-                            // set status => '已進場' enter_t => new Date(time)
-                        }
-                        else if (data[i].status == '已過夜停車!'){
-                            console.log(data[i].LP, '準備退場');
-                            // set status =>'黑名單' enter_t => null  out_t => new Date(time)
-                        }
-                        else if (data[i].status == '黑名單'){
-                            console.log(data[i].LP, '黑名單進場，請前往協助');
-                        }
-                    }
-                }
-            });
-        }
 
-
-        doAjax();
-        console.log(new Date('2019-03-16T12:30:49.477259035Z').getHours());
-
-
-    </script>
     <script>
         function sort(id) {
              var span=document.getElementById(id);
@@ -136,6 +89,14 @@
                 url='{{url('iswhite/')}}'+'/'+id+'/'+text;
                 ajaxget(url);
             }
+        }
+        function unban(LP) {
+            var path="/iswhite/setting/"+LP;
+            var form = document.createElement("form");
+            form.setAttribute("method","get");
+            form.setAttribute("action",path);
+            document.body.appendChild(form);
+            form.submit();
         }
     </script>
 
@@ -165,6 +126,13 @@
         <span class="tm-status-circle cancelled2"></span>
         <span onclick="sort('ban')" id="ban" style="font-size: x-large" class="text-dark font-weight-bold">黑名單&nbsp</span>
     </div>
+        <form id="set_db" action="/iswhite/setting" method="POST">
+            {{ csrf_field() }}
+            <input id="set_LP" type="hidden" value="">
+            <input id="set_status" type="hidden" value="">
+            <input id="set_enter_t" type="hidden" value="">
+            <input id="set_out_t" type="hidden" value="">
+        </form>
     <table class="table">
         <thead>
         <tr>
