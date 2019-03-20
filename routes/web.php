@@ -41,12 +41,9 @@ Route::get('/account',function (){
     return view('account',['body'=>'reportsPage','title' => 'account']);
 })->name('account');
 
-Route::get('/camera',function (){
-    return view('camera',['body'=>'reportsPage','title' => 'camera']);
-})->name('camera');
+Route::get('/camera','CameraController@callapi')->name('camera');
 
 // allen route
 Route::get('/api','InfluxdbController@testdb');
 Route::get('/influxdb/api','InfluxdbController@index');
-
-Route::get('/dashboard','IndexController@index');
+Route::get('/dashboard','IndexController@index')->name('dashboard');

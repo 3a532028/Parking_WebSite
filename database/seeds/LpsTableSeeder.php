@@ -28,8 +28,6 @@ class LpsTableSeeder extends Seeder
             ]);
         }
         //
-
-
     }
 
     public function random_lp(){

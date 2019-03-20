@@ -162,7 +162,6 @@
                         </thead>
                         <tbody>
                             <tr>
-
                                 <th scope="row" id="inter-time">
                                     times
                                 </th>
@@ -190,7 +189,6 @@
                         </thead>
                         <tbody>
                         <tr>
-
                             <th scope="row" id="inter-time">
                                 times
                             </th>
@@ -267,9 +265,9 @@
                    var time=data.results[0].series[0].values[0][0];
                    var img=data.results[0].series[0].values[0][1];
                    var lp=data.results[0].series[0].values[0][3];
-                   document.getElementById("inter-time").innerHTML=time.split(".")[0];
-                   document.getElementById('inter-img').src='http://192.168.5.53:8001/result?filename='+img;
-                   document.getElementById("inter-lp").innerHTML=lp;
+                   document.getElementById("inter-time").innerHTML = time.split(".")[0];
+                   document.getElementById('inter-img').src =' http://192.168.5.53:8001/result?filename='+img;
+                   document.getElementById("inter-lp").innerHTML = lp;
                },
                 complete: function () {
                     // Schedule the next
