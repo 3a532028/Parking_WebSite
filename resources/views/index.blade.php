@@ -206,6 +206,15 @@
                 </div>
             </div>
 
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller">
+                    <h2 class="tm-block-title">車流統計</h2>
+                    <div id="pieChartContainer">
+                        <canvas id="pieVehicleCounter" class="chartjs-render-monitor"></canvas>
+                    </div>
+                </div>
+            </div>
+
 
 
         </div>
@@ -279,5 +288,52 @@
             });
         };
         getplate();
+</script>
+{{--Chart js--}}
+<script>
+    var config = {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: '#FF0000',
+                borderColor: '#FF0000',
+                data: [10, 30, 39, 20, 25, 34, -10],
+                fill: false,
+            }, {
+                label: 'My Second dataset',
+                fill: false,
+                backgroundColor: '#0000FF',
+                borderColor: '#0000FF',
+                data: [18, 33, 22, 19, 11, 39, 30],
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Grid Line Settings'
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        drawBorder: false,
+                        color: ['pink', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple']
+                    },
+                    ticks: {
+                        min: 0,
+                        max: 100,
+                        stepSize: 10
+                    }
+                }]
+            }
+        }
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById('pieVehicleCounter').getContext('2d');
+        window.myLine = new Chart(ctx, config);
+    };
 </script>
 @endsection
