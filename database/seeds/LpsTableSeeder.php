@@ -11,20 +11,30 @@ class LpsTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i<50;$i++){
+        date_default_timezone_set('Asia/Taipei');
+        for($i=0;$i<1;$i++){
             DB::table('lps')->insert([
                 'LP'=>$this->random_lp(),
-                'enter_t'=>date('YmdHis'),
-                'out_t'=>date('YmdHis')+200,
-                'is_white'=>random_int(0,1),
-                'status'=>'已離開'
+//                'enter_t'=>date('YmdHis'),
+                'out_t'=>date('YmdHis'),  //離開時間
+                'is_white'=>1,  //白名單
+                'status'=>'未進場'
+            ]);
+
+            // 'status' => ['已進場','已過夜停車!','未進場','黑名單']
+
+            DB::table('lps')->insert([
+                'LP'=>$this->random_lp(),
+                'enter_t'=>date('YmdHis'), //進場時間
+                'is_white'=>1,   //白名單
+                'status'=>'已進場'
             ]);
 
             DB::table('lps')->insert([
                 'LP'=>$this->random_lp(),
-                'enter_t'=>date('YmdHis'),
-                'is_white'=>random_int(0,1),
-                'status'=>'已進入'
+                'out_t'=>date('YmdHis'),  //上次離開時間
+                'is_white'=>0,   //黑名單
+                'status'=>'黑名單'
             ]);
         }
         //

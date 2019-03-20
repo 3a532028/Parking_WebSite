@@ -19,7 +19,8 @@ Route::group(['prefix'=>'iswhite'],function (){
 Route::get('/','AdminlpsController@index')->name('iswhite');
 Route::get('/seletall','AdminlpsController@seletall');
 Route::get('/{fun}','AdminlpsController@sort');
-Route::get('/search/{Lp}','AdminlpsController@sort');
+Route::get('/search/{Lps}','AdminlpsController@sort');
+Route::get('/setting/{LP}','AdminlpsController@unban');
 });
 
 

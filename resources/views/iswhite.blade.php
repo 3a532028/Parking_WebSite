@@ -44,13 +44,24 @@
                         else if(status[i]=="黑名單"){str+="<div id=\"status\" class=\"tm-status-circle cancelled2\">"}
                         str+=
                             "                </div>"+status[i]+"\n" +
-                            "            </td>\n" +
-                            "            <td><b>"+hours[i]+"小時"+mins[i]+"分鐘</b></td>\n" +
-                            "            <td><b>"+enter_t[i]+"</b></td>\n" +
-                            "            <td><b>"+out_t[i]+"</b></td>\n" +
-                            "            <td>\n";
+                            "            </td>\n";
+                        if(!(enter_t[i]==null) && (hours[i]>0)){
+                            str+="<td><b>"+hours[i]+"小時"+mins[i]+"分鐘</b></td>\n" +
+                                " <td><b>"+enter_t[i]+"</b></td>\n";
+                        }
+                        else if(!(enter_t[i]==null)){
+                            str+="<td><b>"+mins[i]+"分鐘</b></td>\n" +
+                                " <td><b>"+enter_t[i]+"</b></td>\n";
+                        }
+                        else {
+                            str+="<td><b></b></td>\n" +
+                                " <td><b></b></td>\n";
+                        }
+
+                        str+="            <td><b>"+out_t[i]+"</b></td>\n" +
+                             "            <td>\n";
                         if (iswhite[i]){str+="<input class=\"btn btn-info rounded\" type=\"button\" value=\"白名單\" style=\"font-size: 12pt;height:auto;width: 150px;text-align: center;font-weight:bold;\">";}
-                        else {str+="<input class=\"btn btn-dark rounded\" type=\"button\" value=\"取消黑名單\" style=\"font-size: 12pt;height:auto;width: 150px;text-align: center;font-weight:bold;\">";}
+                        else {str+="<input onclick=\"unban(\'"+LP[i]+"\')\" class=\"btn btn-dark rounded\" type=\"button\" value=\"取消黑名單\" style=\"font-size: 12pt;height:auto;width: 150px;text-align: center;font-weight:bold;\">";}
                         str+= "</td>\n" +
                             "</tr>";
                     }
@@ -61,6 +72,7 @@
         }
         $(document).ready(function(){ajaxget()});
     </script>
+
     <script>
         function sort(id) {
              var span=document.getElementById(id);
@@ -80,7 +92,7 @@
              }
         }
         function find(id) {
-            var text=document.getElementById("Lp").value.toUpperCase();
+            var text=document.getElementById("Lps").value.toUpperCase();
             if (text == '' || text == undefined || text == null){
                ajaxget();
             }
@@ -88,6 +100,14 @@
                 url='{{url('iswhite/')}}'+'/'+id+'/'+text;
                 ajaxget(url);
             }
+        }
+        function unban(LP) {
+            var path="/iswhite/setting/"+LP;
+            var form = document.createElement("form");
+            form.setAttribute("method","get");
+            form.setAttribute("action",path);
+            document.body.appendChild(form);
+            form.submit();
         }
     </script>
 
@@ -117,6 +137,13 @@
         <span class="tm-status-circle cancelled2"></span>
         <span onclick="sort('ban')" id="ban" style="font-size: x-large" class="text-dark font-weight-bold">黑名單&nbsp</span>
     </div>
+        <form id="set_db" action="/iswhite/setting" method="POST">
+            {{ csrf_field() }}
+            <input id="set_LP" type="hidden" value="">
+            <input id="set_status" type="hidden" value="">
+            <input id="set_enter_t" type="hidden" value="">
+            <input id="set_out_t" type="hidden" value="">
+        </form>
     <table class="table">
         <thead>
         <tr>
