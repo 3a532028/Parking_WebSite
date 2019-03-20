@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('index')}}">
+                    <a class="nav-link active" href="{{route('dashboard')}}">
                         <i class="fas fa-tachometer-alt"></i>
 
                         Dashboard
