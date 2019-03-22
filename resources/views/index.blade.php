@@ -11,15 +11,15 @@
         <!-- row -->
         <div class="row tm-content-row">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                <div class="tm-bg-primary-dark tm-block">
-                    <h2 class="tm-block-title">Latest Hits</h2>
-                    <canvas id="lineChart"></canvas>
+                <div class="embed-responsive embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item"
+                            src="http://192.168.5.17:3000/d/2qwA9x3mz/demo?orgId=1&fullscreen&panelId=2"></iframe>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                <div class="tm-bg-primary-dark tm-block">
-                    <h2 class="tm-block-title">Performance</h2>
-                    <canvas id="barChart"></canvas>
+                <div class="embed-responsive embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item"
+                            src="http://192.168.5.17:3000/d/2qwA9x3mz/demo?orgId=1&fullscreen&panelId=4"></iframe>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
@@ -213,6 +213,9 @@
                 </div>
             </div>
 
+            <div class="embed-responsive embed-responsive embed-responsive-21by9">
+                <iframe class="embed-responsive-item" src="http://192.168.5.17:3000/d/w1sqqajik/srs-telegraf?orgId=1&refresh=5s&from=now-1h&to=now&fullscreen&panelId=65089"></iframe>
+            </div>
 
 
         </div>
