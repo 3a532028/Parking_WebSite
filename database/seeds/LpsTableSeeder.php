@@ -12,7 +12,7 @@ class LpsTableSeeder extends Seeder
     public function run()
     {
         date_default_timezone_set('Asia/Taipei');
-        for($i=0;$i<1;$i++){
+        for($i=0;$i<15;$i++){
             DB::table('lps')->insert([
                 'LP'=>$this->random_lp(),
 //                'enter_t'=>date('YmdHis'),
