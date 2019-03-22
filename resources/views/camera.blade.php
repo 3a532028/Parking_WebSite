@@ -11,7 +11,6 @@
                     </form>
                     <br>
                     <div class="embed-responsive embed-responsive-4by3">
-                        {{--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>--}}
                         <video id="my-video" class="video-js embed-responsive-item" data-setup='{ "autoplay" : true , "controls" : "true" , "poster" : "true" , "preload" : "auto"  }'>
                             <source  id = "url" src = "https://3lcvhr1.yfcache.com/video.lv-play.com/live/2974950G68043rXLR_s1.flv"  type='video/flv'>
                             <p class="vjs-no-js">
@@ -30,23 +29,12 @@
                     <h3 id="AreaBox" class ='font-weight-bold col-6'></h3>
                     <br>
                     <div>
-                        {{--<div class="embed-responsive embed-responsive-21by9">--}}
-                            {{--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>--}}
-                            {{--<iframe id="my-video2" class="video-js embed-responsive-item" data-setup='{ "autoplay": true, "controls": true, "poster": "", "preload": "auto" }'>--}}
-                                {{--<source  id = "url" src = ""  type='video/flv'>--}}
-                                {{--<p class="vjs-no-js">--}}
-                                    {{--<!-- 如果使用者不支援JavaScript，顯示這段-->--}}
-                                    {{--To view this video please enable JavaScript, and consider upgrading to a web browser that--}}
-                                    {{--<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>--}}
-                                {{--</p>--}}
-                            {{--</iframe>--}}
-                        {{--</div>--}}
+
                     </div>
                 </div>
             </div>
             <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
-                    {{--<h2 class="tm-block-title">Product Categories</h2>--}}
                     <h1 id= "RtmpName"></h1>
                     <div class="list-group">
                         <div class="btn-group-vertical">
@@ -135,7 +123,7 @@
             document.getElementById("AreaBox").innerHTML='入口';
             document.getElementById("RtmpName").innerHTML='Rtmp-Play0';
             // document.getElementById("video-src").src="aaa";
-            var src ='https://3geauymtsgrzdrcbzfahue.ourdvsss.com/video-ws-kk.lv-play.com/obslive/3180681G74504Sf86_s1.flv?wshc_tag=0&wsts_tag=5c920e92&wsid_tag=d348a867&wsiphost=ipdbm' ;
+            var src ='https://3geauymtsgrzdrcbzfahue.ourdvsss.com/video-ws-kk.lv-play.com/obslive/3895375G82004KfU4_s1.flv?wshc_tag=0&wsts_tag=5c922bfa&wsid_tag=d348a867&wsiphost=ipdbm' ;
             change(src);
         }
         function ShowArea1(){
