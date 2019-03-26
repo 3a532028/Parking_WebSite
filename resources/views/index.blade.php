@@ -170,10 +170,11 @@
             $.ajax({
                url: 'http://192.168.5.17:8086/query?q=select+last(plate)%2C*+from+%22result%22&db=mydb&pretty=true',
                success:function (data) {
-                   var time=data.results[0].series[0].values[0][0];
+                   var time=data.results[0].series[0].values[0][0].split(".")[0];
                    var img=data.results[0].series[0].values[0][1];
                    var lp=data.results[0].series[0].values[0][3];
-                   document.getElementById("inter-time").innerHTML = time.split(".")[0];
+                   let UTCTimeObj = new Date(time=time+'z');
+                   document.getElementById("inter-time").innerHTML = UTCTimeObj.toLocaleString();
                    document.getElementById('inter-img').src =' http://192.168.5.53:8001/result?filename='+img;
                    document.getElementById("inter-lp").innerHTML = lp;
                },
@@ -185,51 +186,9 @@
         };
         getplate();
 </script>
-{{--Chart js--}}
-<script>
-    var config = {
-        type: 'line',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: '#FF0000',
-                borderColor: '#FF0000',
-                data: [10, 30, 39, 20, 25, 34, -10],
-                fill: false,
-            }, {
-                label: 'My Second dataset',
-                fill: false,
-                backgroundColor: '#0000FF',
-                borderColor: '#0000FF',
-                data: [18, 33, 22, 19, 11, 39, 30],
-            }]
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Grid Line Settings'
-            },
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        drawBorder: false,
-                        color: ['pink', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple']
-                    },
-                    ticks: {
-                        min: 0,
-                        max: 100,
-                        stepSize: 10
-                    }
-                }]
-            }
-        }
-    };
-
-    window.onload = function() {
-        var ctx = document.getElementById('pieVehicleCounter').getContext('2d');
-        window.myLine = new Chart(ctx, config);
-    };
-</script>
+    <script>
+        // let UTCTime = '2019-03-26T07:25:06z';                  // 從 DB 拿回來的 UTC/ISO 時間
+        // let UTCTimeObj = new Date(UTCTime);
+        // console.log(UTCTimeObj.toLocaleString());
+    </script>
 @endsection
