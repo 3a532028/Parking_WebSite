@@ -8,11 +8,14 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <h2 class="tm-block-title mb-4">歡迎登入</h2>
+                            @if(!empty($msg))
+                                <h2 class="tm-block-title-red mb-4">{{ $msg }}</h2>
+                                @endif
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <form action="{{ route('log_in') }}" method="post" class="tm-login-form">
+                            <form action="{{ route('login') }}" method="post" class="tm-login-form">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="username">帳號</label>

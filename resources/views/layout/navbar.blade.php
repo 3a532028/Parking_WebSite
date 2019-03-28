@@ -60,9 +60,15 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link d-block" href="{{route('log_in')}}">
-                        Admin, <b>Logout</b>
-                    </a>
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                            <a class="nav-link d-block" href="{{route('logout')}}">
+                                {{ \Illuminate\Support\Facades\Auth::user()->name}},<b>Logout</b>
+                            </a>
+                        @else
+                            <a class="nav-link d-block" href="{{route('login')}}">
+                                <b>Login</b>
+                            </a>
+                        @endif
                 </li>
             </ul>
         </div>
