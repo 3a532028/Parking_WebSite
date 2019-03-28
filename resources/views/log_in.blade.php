@@ -9,7 +9,9 @@
                         <div class="col-12 text-center">
                             <h2 class="tm-block-title mb-4">歡迎登入</h2>
                             @if(!empty($msg))
-                                <h2 class="tm-block-title-red mb-4">{{ $msg }}</h2>
+                                <div class="alert alert-danger">
+                                    {{ $msg }}
+                                </div>
                                 @endif
                         </div>
                     </div>
@@ -47,9 +49,29 @@
                                         登入
                                     </button>
                                 </div>
-                                <button class="mt-5 btn btn-primary btn-block text-uppercase">
+                                <button type="button" class="mt-5 btn btn-primary btn-block text-uppercase " data-toggle="modal" data-target="#msg">
                                     忘記密碼了嗎?
                                 </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="msg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">提示</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                請聯絡管理人員 分機號碼#5960
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
