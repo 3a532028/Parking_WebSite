@@ -25,9 +25,6 @@ Route::get('/setting/{LP}','AdminlpsController@unban');
 
 
 
-Route::get('/log_in', function () {
-    return view('log_in',['body'=>'reportsPage','title'=>'log_in']);
-})->name('log_in');
 
 
 Route::get('/index',function (){
@@ -47,4 +44,13 @@ Route::get('/camera','CameraController@callapi')->name('camera');
 // allen route
 Route::get('/api','InfluxdbController@testdb');
 Route::get('/influxdb/api','InfluxdbController@index');
-Route::get('/dashboard','IndexController@index')->name('dashboard');
+
+Route::group(['middleware' => 'auth'],function (){
+    Route::get('/dashboard','IndexController@index')->name('dashboard');
+
+});
+
+// login
+Route::get('/log_in','UserController@login_index')->name('login');
+Route::post('/log_in','UserController@login');
+Route::get('/log_out','UserController@logout')->name('logout');

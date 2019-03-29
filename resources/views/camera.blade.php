@@ -6,6 +6,7 @@
             <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-products">
                     <div class="row">
+<<<<<<< HEAD
                         <div class="col-sm-8">
                             <form name='form' id='form' class="form-inline">
                                 <input style="width: 280px" type='text' name='name' id='src'  class="form-control mr-sm-2" placeholder="切換網址"/>
@@ -28,12 +29,26 @@
                                 Camera 2
                             </button>
                         </div>
+=======
+                    <div class="col-sm-8">
+                    <form name='form' id='form' class="form-inline">
+                        <input style="width: 280px" type='text' name='name' id='src'  class="form-control mr-sm-2" placeholder="切換網址"/>
+                        <input class="btn btn-outline-warning my-2 my-sm-0" type='button' name='submit' value='切換' onclick='processFormData();' />
+                    </form>
+                    </div>
+                    <div class="col-sm">
+                        <span id="RtmpName" class="btn btn-info"  style="width: auto;text-align: center;font-weight:bold;">Rtmp-Play0</span>
+                    </div>
+>>>>>>> 9cbc3d8c47535476e72c7b076e7de0d693dce442
                     </div>
                     <br>
                     <div class="embed-responsive embed-responsive-4by3">
-                        {{--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>--}}
                         <video id="my-video" class="video-js embed-responsive-item" data-setup='{ "autoplay" : true , "controls" : "true" , "poster" : "true" , "preload" : "auto"  }'>
+<<<<<<< HEAD
                             <source  id = "url" src = "rtmp://192.168.5.200:1935/live/txg0_0"  type='rtmp/flv'>
+=======
+                            <source  id = "url" src = "rtmp://192.168.5.200:1935/live/rd0_0"  type='rtmp/flv'>
+>>>>>>> 9cbc3d8c47535476e72c7b076e7de0d693dce442
                             <p class="vjs-no-js">
                                 <!-- 如果使用者不支援JavaScript，顯示這段-->
                                 To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -46,9 +61,14 @@
                     <br>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-products">
                     {{--<h2 class="tm-block-title">Product Categories</h2>--}}
+=======
+            <div  class=" col-sm-10 col-md-10 col-lg-4 col-xl-4 tm-block-col">
+                <div  class="tm-bg-primary-dark tm-block tm-block-product-categories">
+>>>>>>> 9cbc3d8c47535476e72c7b076e7de0d693dce442
                     <h1 id= "RtmpName"></h1>
                     <div class="list-group">
                         {{--<div class="btn-group-vertical">--}}
@@ -67,7 +87,7 @@
                                 <p class = 'font-weight-bold'>車牌影像：</p>
                                 {{--<small class="text-muted">123</small>--}}
                                 <td>
-                                    <img id="inter-img" src="">
+                                    <img  style="width: 70%" id="inter-img" src="">
                                 </td>
                                 <hr>
                                 <p class = 'font-weight-bold t'>車牌字符：</p>
@@ -98,7 +118,6 @@
     </div>
     <th scope="col">{{ $columns }}</th>
     <th scope="col">{{ $values }}</th>
-
 @endsection
 
 @section('script')
@@ -139,19 +158,19 @@
             document.getElementById("AreaBox").innerHTML='入口';
             document.getElementById("RtmpName").innerHTML='Rtmp-Play0';
             // document.getElementById("video-src").src="aaa";
-            var src ='https://3geauymtsgrzdrcbzfahue.ourdvsss.com/video-ws-kk.lv-play.com/obslive/3180681G74504Sf86_s1.flv?wshc_tag=0&wsts_tag=5c920e92&wsid_tag=d348a867&wsiphost=ipdbm' ;
+            var src ='https://3geauymtsgrzdrcbzfahur.ourdvsss.com/video-ws-kk.lv-play.com/obslive/2477024G39750Gs3N_s2.flv?wshc_tag=1&wsts_tag=5c94c592&wsid_tag=786c19fa&wsiphost=ipdbm' ;
             change(src);
         }
         function ShowArea1(){
             document.getElementById("AreaBox").innerHTML='中島上';
             document.getElementById("RtmpName").innerHTML='Rtmp-Play1';
-            var src ='https://5lcvhr1.yfcache.com/video.lv-play.com/live/2419151G34710QEKD_s1.flv';
+            var src ='rtmp://192.168.5.200:1935/live/rd0_1';
             change(src);
         }
         function ShowArea2(){
             document.getElementById("AreaBox").innerHTML='左邊草叢';
             document.getElementById("RtmpName").innerHTML='Rtmp-Play2';
-            var src ='https://8lcvhr1.yfcache.com/video.lv-play.com/live/2122256G23955Zklw_s1.flv';
+            var src ='http://192.168.5.200:8080/live/rd0_0.flv';
             change(src);
         }
     </script>

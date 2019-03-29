@@ -95,6 +95,12 @@ button:focus {
   color: #fff;
   margin-bottom: 30px;
 }
+.tm-block-title-red {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ff2b06;
+  margin-bottom: 30px;
+}
 .nav-link {
   color: #fff;
   height: 100%;
@@ -189,6 +195,13 @@ button:focus {
   font-size: 95%;
   margin-bottom: 15px;
 }
+.tm-notification-item-dark {
+  padding: 15px;
+  background-color: #171819;
+  color: #fff;
+  font-size: 95%;
+  margin-bottom: 15px;
+}
 .tm-notification-item:last-child {
   margin-bottom: 0;
 }
@@ -212,6 +225,17 @@ thead {
   color: #fff;
 }
 .table thead th {
+  border-bottom: 0;
+}
+.table-dark {
+  background-color: #171819;
+  color: #fff;
+  font-size: 85%;
+  margin-bottom: 0;
+}
+.table-dark thead th {
+  background-color: #171819;
+  color: #fff;
   border-bottom: 0;
 }
 .tm-status-circle {
@@ -379,6 +403,9 @@ thead {
 }
 .tm-bg-primary-dark {
   background-color: #435c70;
+}
+.tm-bg-primary-black {
+  background-color: #090909;
 }
 .tm-bg-gray {
   background-color: rgba(0, 0, 0, 0.05);
