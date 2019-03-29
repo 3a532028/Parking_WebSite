@@ -5,15 +5,35 @@
         <div class="row tm-content-row">
             <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-products">
-                    <form name='form' id='form' >
-                        網址：<input style="width: 280px" type='text' name='name' id='src'/>
-                        <input  type='button' name='submit' value='切換' onclick='processFormData();' />
-                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <form name='form' id='form' class="form-inline">
+                                <input style="width: 280px" type='text' name='name' id='src'  class="form-control mr-sm-2" placeholder="切換網址"/>
+                                <input class="btn btn-outline-warning my-2 my-sm-0" type='button' name='submit' value='切換' onclick='processFormData();' />
+                            </form>
+                        </div>
+                        <div class="col-sm">
+                            <span id="RtmpName" class="btn btn-info"  style="width: auto;text-align: center;font-weight:bold;">Rtmp-Play0</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button class="btn btn-primary btn-block text-uppercase rounded" onclick="ShowArea0()">
+                                Camera 1
+                            </button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-primary btn-block text-uppercase rounded"onclick="ShowArea1()">
+                                Camera 2
+                            </button>
+                        </div>
+                    </div>
                     <br>
                     <div class="embed-responsive embed-responsive-4by3">
                         {{--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>--}}
                         <video id="my-video" class="video-js embed-responsive-item" data-setup='{ "autoplay" : true , "controls" : "true" , "poster" : "true" , "preload" : "auto"  }'>
-                            <source  id = "url" src = "https://3lcvhr1.yfcache.com/video.lv-play.com/live/2974950G68043rXLR_s1.flv"  type='video/flv'>
+                            <source  id = "url" src = "rtmp://192.168.5.200:1935/live/txg0_0"  type='rtmp/flv'>
                             <p class="vjs-no-js">
                                 <!-- 如果使用者不支援JavaScript，顯示這段-->
                                 To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -21,45 +41,24 @@
                             </p>
                         </video>
                     </div>
-                    {{--<div class="row container justify-content-between ">--}}
-                        {{--<button onclick="play()" class="btn btn-default rounded">Play</button>--}}
-                        {{--<button onclick="pause()" class="btn btn-default rounded">Pause</button>--}}
-                        {{--<button onclick="mute()" class="btn btn-default rounded">Mute</button>--}}
-                        {{--<h3 id="AreaBox" class ='font-weight-bold col-6'></h3>--}}
-                    {{--</div>--}}
+
                     <h3 id="AreaBox" class ='font-weight-bold col-6'></h3>
                     <br>
-                    <div>
-                        {{--<div class="embed-responsive embed-responsive-21by9">--}}
-                            {{--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>--}}
-                            {{--<iframe id="my-video2" class="video-js embed-responsive-item" data-setup='{ "autoplay": true, "controls": true, "poster": "", "preload": "auto" }'>--}}
-                                {{--<source  id = "url" src = ""  type='video/flv'>--}}
-                                {{--<p class="vjs-no-js">--}}
-                                    {{--<!-- 如果使用者不支援JavaScript，顯示這段-->--}}
-                                    {{--To view this video please enable JavaScript, and consider upgrading to a web browser that--}}
-                                    {{--<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>--}}
-                                {{--</p>--}}
-                            {{--</iframe>--}}
-                        {{--</div>--}}
-                    </div>
                 </div>
             </div>
             <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4 tm-block-col">
-                <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+                <div class="tm-bg-primary-dark tm-block tm-block-products">
                     {{--<h2 class="tm-block-title">Product Categories</h2>--}}
                     <h1 id= "RtmpName"></h1>
                     <div class="list-group">
-                        <div class="btn-group-vertical">
-                            <button class="btn btn-primary btn-block text-uppercase rounded" onclick="ShowArea0()">
-                                Camera 1
-                            </button>
-                            <button class="btn btn-primary btn-block text-uppercase rounded"onclick="ShowArea1()">
-                                Camera 2
-                            </button>
-                            <button class="btn btn-primary btn-block text-uppercase rounded"onclick="ShowArea2()">
-                                Camera 3
-                            </button>
-                        </div>
+                        {{--<div class="btn-group-vertical">--}}
+                            {{--<button class="btn btn-primary btn-block text-uppercase rounded" onclick="ShowArea0()">--}}
+                                {{--Camera 1--}}
+                            {{--</button>--}}
+                            {{--<button class="btn btn-primary btn-block text-uppercase rounded"onclick="ShowArea1()">--}}
+                                {{--Camera 2--}}
+                            {{--</button>--}}
+                        {{--</div>--}}
                         <div class="card card-outline-secondary my-4">
                             <div class="card-header text-center font-weight-bold">
                                 辨識結果
@@ -82,6 +81,11 @@
                                 <th scope="row">
                                     <p id ='inter-time'>time</p>
                                 </th>
+                                <hr>
+                                <p class = 'font-weight-bold'>管院車輛剩餘：</p>
+                                <div class="alert alert-info"style="font-size: 40px;text-align: center;margin: 30px" role="alert">
+                                    {{$Cars}}
+                                </div>
                             </div>
                         </div>
                     </div>
