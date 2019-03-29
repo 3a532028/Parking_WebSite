@@ -6,7 +6,6 @@
             <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-products">
                     <div class="row">
-<<<<<<< HEAD
                         <div class="col-sm-8">
                             <form name='form' id='form' class="form-inline">
                                 <input style="width: 280px" type='text' name='name' id='src'  class="form-control mr-sm-2" placeholder="切換網址"/>
@@ -29,26 +28,13 @@
                                 Camera 2
                             </button>
                         </div>
-=======
-                    <div class="col-sm-8">
-                    <form name='form' id='form' class="form-inline">
-                        <input style="width: 280px" type='text' name='name' id='src'  class="form-control mr-sm-2" placeholder="切換網址"/>
-                        <input class="btn btn-outline-warning my-2 my-sm-0" type='button' name='submit' value='切換' onclick='processFormData();' />
-                    </form>
                     </div>
-                    <div class="col-sm">
-                        <span id="RtmpName" class="btn btn-info"  style="width: auto;text-align: center;font-weight:bold;">Rtmp-Play0</span>
-                    </div>
->>>>>>> 9cbc3d8c47535476e72c7b076e7de0d693dce442
-                    </div>
+       
                     <br>
                     <div class="embed-responsive embed-responsive-4by3">
                         <video id="my-video" class="video-js embed-responsive-item" data-setup='{ "autoplay" : true , "controls" : "true" , "poster" : "true" , "preload" : "auto"  }'>
-<<<<<<< HEAD
                             <source  id = "url" src = "rtmp://192.168.5.200:1935/live/txg0_0"  type='rtmp/flv'>
-=======
-                            <source  id = "url" src = "rtmp://192.168.5.200:1935/live/rd0_0"  type='rtmp/flv'>
->>>>>>> 9cbc3d8c47535476e72c7b076e7de0d693dce442
+
                             <p class="vjs-no-js">
                                 <!-- 如果使用者不支援JavaScript，顯示這段-->
                                 To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -61,14 +47,10 @@
                     <br>
                 </div>
             </div>
-<<<<<<< HEAD
             <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-products">
                     {{--<h2 class="tm-block-title">Product Categories</h2>--}}
-=======
-            <div  class=" col-sm-10 col-md-10 col-lg-4 col-xl-4 tm-block-col">
-                <div  class="tm-bg-primary-dark tm-block tm-block-product-categories">
->>>>>>> 9cbc3d8c47535476e72c7b076e7de0d693dce442
+
                     <h1 id= "RtmpName"></h1>
                     <div class="list-group">
                         {{--<div class="btn-group-vertical">--}}
