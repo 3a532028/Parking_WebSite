@@ -41,6 +41,11 @@ class UserController extends Controller
         return 100-count($lps);
     }
 
+    public function account_index()
+    {
+        return view('account',['body'=>'account','title' => 'account']);
+    }
+
     public function insert(Request $request)
     {
 //        return $request;

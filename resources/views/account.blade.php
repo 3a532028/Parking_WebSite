@@ -19,26 +19,7 @@
         </div>
         <!-- row -->
         <div class="row tm-content-row">
-            <div class="tm-block-col tm-col-avatar">
-                <div class="tm-bg-primary-dark tm-block tm-block-avatar">
-                    <h2 class="tm-block-title">證件照</h2>
-                    <div class="tm-avatar-container">
-                        <img
-                                src="img/avatar.png"
-                                alt="Avatar"
-                                class="tm-avatar img-fluid mb-4"
-                        />
-                        <a href="#" class="tm-avatar-delete-link">
-                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                        <input type="file">
-                    </div>
-                    <button class="btn btn-primary btn-block text-uppercase">
-                        證件照上傳
-                    </button>
-                </div>
-            </div>
-            <div class="tm-block-col tm-col-account-settings">
+            <div class="col-12 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-settings">
                     <h2 class="tm-block-title">帳戶資料</h2>
                     @if(!empty($msg))
@@ -55,6 +36,7 @@
                                     class="form-control validate"
                                     data-toggle="tooltip"
                                     title="請輸入姓名"
+                                    required
                                     
                             />
                         </div>
@@ -67,6 +49,7 @@
                                     class="form-control validate"
                                     data-toggle="tooltip"
                                     title="請輸入郵件信箱"
+                                    required
                                     
                             />
                         </div>
@@ -79,6 +62,7 @@
                                     class="form-control validate"
                                     data-toggle="tooltip"
                                     title="請輸入教師編號"
+                                    required
                                     
                             />
                         </div>
@@ -91,6 +75,7 @@
                                     class="form-control validate"
                                     data-toggle="tooltip"
                                     title="請輸入您的車牌號碼"
+                                    required
                                     
                             />
                         </div>
@@ -103,9 +88,10 @@
                                     type="tel"
                                     class="form-control validate"
                                     
-                                    pattern="[0-9]{4}-[0-9]{6}" //(XXXX-XXXXXX)
+                                    pattern="[0-9]{10}" //(XXXXXXXXXX)
                                     data-toggle="tooltip"
                                     title="請輸入您的手機號碼"
+                                    required
                             />
                         </div>
                         <div class="form-group col-lg-6">
@@ -118,6 +104,7 @@
                                     class="form-control validate"
                                     data-toggle="tooltip"
                                     title="請輸入您在校內的分機"
+                                    required
                                     
                             />
                         </div>
@@ -132,11 +119,9 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label class="tm-hide-sm">&nbsp;</label>
-                            <button
-                                    //value="refresh"  //F5 
+                            <button value="refresh"
                                     class="btn btn-danger btn-block text-uppercase"
-                                    onclick="location.reload()"
-                            >
+                                    onclick="location.reload()">
                                 重置
                             </button>
                         </div>

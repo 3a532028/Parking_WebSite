@@ -57,6 +57,26 @@
 <!-- https://jquery.com/download/ -->
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
+<script>
+    // document.getElementById("hrf-dashboard").classList.add('active');
+
+    // alert(document.body.id);
+    switch (document.body.id) {
+        case 'dashboard':
+            document.getElementById("hrf-dashboard").classList.add('active');
+            break;
+        case 'iswhite':
+            document.getElementById("hrf-iswhite").classList.add('active');
+            break;
+        case 'camera':
+            document.getElementById("hrf-camera").classList.add('active');
+            break;
+        case 'account':
+            document.getElementById("hrf-account").classList.add('active');
+            break;
+    }
+</script>
+
 @section('script')
     內容~內容~內容
 @show

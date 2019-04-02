@@ -31,14 +31,6 @@ Route::get('/index',function (){
    return view('index',['body'=>'reportsPage','title'=>'index']);
 })->name('index');
 
-Route::get('/products',function (){
-    return view('products',['body'=>'reportsPage','title' => 'products']);
-})->name('products');
-
-Route::get('/account',function (){
-    return view('account',['body'=>'reportsPage','title' => 'account']);
-})->name('account');
-
 Route::get('/camera','CameraController@callapi')->name('camera');
 
 // allen route
@@ -56,4 +48,5 @@ Route::get('/log_in','UserController@login_index')->name('login');
 Route::post('/log_in','UserController@login');
 Route::get('/log_out','UserController@logout')->name('logout');
 
+Route::get('/account','UserController@account_index')->name('account');
 Route::post('/account','UserController@insert');
