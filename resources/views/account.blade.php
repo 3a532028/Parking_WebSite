@@ -31,6 +31,7 @@
                         <a href="#" class="tm-avatar-delete-link">
                             <i class="far fa-trash-alt tm-product-delete-icon"></i>
                         </a>
+                        <input type="file">
                     </div>
                     <button class="btn btn-primary btn-block text-uppercase">
                         證件照上傳
@@ -142,10 +143,3 @@
     </div>
 </div>
 @endsection
-@section('script')
-<script src="js/jquery-3.3.1.min.js"></script>
-<!-- https://jquery.com/download/ -->
-<script src="js/bootstrap.min.js"></script>
-<!-- https://getbootstrap.com/ -->
-@endsection
-

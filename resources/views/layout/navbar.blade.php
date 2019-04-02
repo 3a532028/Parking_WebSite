@@ -26,12 +26,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('products')}}">
-                        <i class="fas fa-shopping-cart"></i>
-                        Products
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{route('camera')}}">
                         <i class="fas fa-video"></i>
                         Camera
@@ -40,7 +34,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('account')}}">
                         <i class="far fa-user"></i>
-                        帳戶設定
+                        新增車牌
                     </a>
                 </li>
                 <li class="nav-item dropdown">
