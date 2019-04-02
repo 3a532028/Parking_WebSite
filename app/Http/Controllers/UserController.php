@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lps;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,5 +32,11 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect('/log_in');
+    }
+
+    public function test()
+    {
+        $lps=Lps::all()->where('status','已進場');
+        return 100-count($lps);
     }
 }

@@ -44,6 +44,7 @@ Route::get('/camera','CameraController@callapi')->name('camera');
 // allen route
 Route::get('/api','InfluxdbController@testdb');
 Route::get('/influxdb/api','InfluxdbController@index');
+Route::get('/test','UserController@test');
 
 Route::group(['middleware' => 'auth'],function (){
     Route::get('/dashboard','IndexController@index')->name('dashboard');
