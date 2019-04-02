@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Lps;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
@@ -18,7 +18,9 @@ class CameraController extends Controller
         $dbname=$response['results'][0]['series'][0]['name'];
         $columns=$response['results'][0]['series'][0]['columns'][3];
         $values=$response['results'][0]['series'][0]['values'][0][3];
+        $car = Lps::All()->Where('status','已進場');
+
 //        return $values[0];
-        return view('camera',['title'=>'camera','body'=>'camera','columns'=>$columns,"values"=>$values]);
+        return view('camera',['title'=>'camera','body'=>'camera','columns'=>$columns,"values"=>$values,'Cars'=>100-count($car)]);
     }
 }
