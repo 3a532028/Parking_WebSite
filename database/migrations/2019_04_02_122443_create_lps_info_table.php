@@ -14,7 +14,7 @@ class CreateLpsInfoTable extends Migration
     public function up()
     {
         Schema::create('lps_info', function (Blueprint $table) {
-            $table->string('id');
+            $table->string('id')->unique();
             $table->string('name');
             $table->string('mail');
             $table->string('lp');

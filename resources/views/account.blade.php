@@ -41,7 +41,11 @@
             <div class="tm-block-col tm-col-account-settings">
                 <div class="tm-bg-primary-dark tm-block tm-block-settings">
                     <h2 class="tm-block-title">帳戶資料</h2>
-                    <form action="" class="tm-signup-form row">
+                    @if(!empty($msg))
+                        <div class="alert alert-danger">{{ $msg }}</div>
+                        @endif
+                    <form action="/account" class="tm-signup-form row" method="post">
+                        {{ csrf_field() }}
                         <div class="form-group col-lg-6">
                             <label for="name">姓名</label>
                             <input
@@ -108,7 +112,7 @@
                             <label for="phone-school">校內分機(XXXX)</label>
                             <input
                                     id="phone"
-                                    name="phone"
+                                    name="extension"
                                     type="tel"
                                     pattern="[0-9]{4}"  //預設4位數
                                     class="form-control validate"

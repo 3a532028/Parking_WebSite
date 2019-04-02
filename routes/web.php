@@ -55,3 +55,5 @@ Route::group(['middleware' => 'auth'],function (){
 Route::get('/log_in','UserController@login_index')->name('login');
 Route::post('/log_in','UserController@login');
 Route::get('/log_out','UserController@logout')->name('logout');
+
+Route::post('/account','UserController@insert');
