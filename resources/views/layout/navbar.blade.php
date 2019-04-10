@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-        <a class="navbar-brand" href="{{ route('index') }}">
+        <a class="navbar-brand">
             <h1 class="tm-site-title mb-0">智慧停車場管理系統</h1>
         </a>
         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('dashboard')}}">
+                    <a id="hrf-dashboard" class="nav-link" href="{{route('dashboard')}}">
                         <i class="fas fa-tachometer-alt"></i>
 
                         Dashboard
@@ -20,27 +20,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('iswhite')}}">
+                    <a id="hrf-iswhite" class="nav-link" href="{{route('iswhite')}}">
                         <i class="far fa-file-alt"></i>
                         黑白名單
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('products')}}">
-                        <i class="fas fa-shopping-cart"></i>
-                        Products
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('camera')}}">
+                    <a id="hrf-camera" class="nav-link" href="{{route('camera')}}">
                         <i class="fas fa-video"></i>
                         Camera
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('account')}}">
+                    <a id="hrf-account"  class="nav-link" href="{{route('account')}}">
                         <i class="far fa-user"></i>
-                        帳戶設定
+                        新增車牌
                     </a>
                 </li>
                 <li class="nav-item dropdown">

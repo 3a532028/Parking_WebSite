@@ -13,7 +13,7 @@ class IndexController extends Controller
     {
         $lps=Lps::all();
 //        return $lps;
-        return view('index',['title'=>'index','body'=>'reportsPage','lps'=>$lps]);
+        return view('index',['title'=>'index','body'=>'dashboard','lps'=>$lps]);
     }
 
 }
