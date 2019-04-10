@@ -15,19 +15,19 @@
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                 <div class="embed-responsive embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item"
-                            src="http://192.168.5.17:3000/d/2qwA9x3mz/demo?orgId=1&fullscreen&panelId=2"></iframe>
+                            src="http://192.168.5.17:3000/d/2qwA9x3mz/demo?orgId=1&fullscreen&panelId=2&from=now%2Fd&to=now%2Fd"></iframe>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                 <div class="embed-responsive embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item"
-                            src="http://192.168.5.17:3000/d/2qwA9x3mz/demo?orgId=1&fullscreen&panelId=4"></iframe>
+                            src="http://192.168.5.17:3000/d/2qwA9x3mz/demo?orgId=1&fullscreen&panelId=2&from=now%2Fd&to=now%2Fd"></iframe>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                 <div class="embed-responsive embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item"
-                            src="http://192.168.5.17:3000/d/2qwA9x3mz/demo?panelId=6&fullscreen&tab=visualization&orgId=1"></iframe>
+                            src="http://192.168.5.17:3000/d/2qwA9x3mz/demo?panelId=6&fullscreen&tab=visualization&orgId=1&from=now%2Fd&to=now%2Fd"></iframe>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">

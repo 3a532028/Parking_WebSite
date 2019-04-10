@@ -12,7 +12,7 @@ class UserController extends Controller
     //
     public function login_index()
     {
-        return view('log_in',['body'=>'reportsPage','title'=>'log_in']);
+        return view('log_in',['body'=>'dashboard','title'=>'log_in']);
     }
 
     public function login(Request $request)
@@ -26,7 +26,7 @@ class UserController extends Controller
             return redirect('dashboard');
         }
 
-        return view('log_in',['body'=>'reportsPage','title'=>'log_in','msg'=>'帳號或密碼錯誤']);
+        return view('log_in',['body'=>'dashboard','title'=>'log_in','msg'=>'帳號或密碼錯誤']);
     }
 
     public function logout()
@@ -51,7 +51,7 @@ class UserController extends Controller
 //        return $request;
         $lps_info=Lps_info::where('id',$request->ID)->get();
         if (!$lps_info->isEmpty()){
-            return view('account',['body'=>'reportsPage','title' => 'account','msg'=>$request->ID.'此用戶已經申請過!!']);
+            return view('account',['body'=>'account','title' => 'account','msg'=>$request->ID.'此用戶已經申請過!!']);
         }else{
             Lps_info::create([
                 'id'=>$request->ID,
@@ -68,7 +68,7 @@ class UserController extends Controller
                 'status'=>'未進場'
             ]);
 
-            return view('account',['body'=>'reportsPage','title' => 'account','msg'=>$request->ID.'新增成功!!']);
+            return view('account',['body'=>'account','title' => 'account','msg'=>$request->ID.'新增成功!!']);
         }
     }
 }
