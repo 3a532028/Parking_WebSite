@@ -116,14 +116,14 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <th scope="row" id="inter-time">
+                                <th scope="row" id="outer-time">
                                     times
                                 </th>
-                                <td id="inter-lp">
+                                <td id="outer-lp">
                                     lp
                                 </td>
                                 <td>
-                                    <img id="inter-img" src="">
+                                    <img id="outer-img" src="">
                                 </td>
                             </tr>
                             </tbody>
@@ -168,17 +168,17 @@
             });
         };
 
-        var getplate=function(){
+        var getinplate=function(){
             $.ajax({
-               url: 'http://192.168.5.17:8086/query?q=select+last(plate)%2C*+from+%22result%22&db=mydb&pretty=true',
+               url: 'http://192.168.5.17:8086/query?q=select+last(plate)%2C*+from+%22in%22&db=NCUT_MM&pretty=true',
                success:function (data) {
                    var time=data.results[0].series[0].values[0][0].split(".")[0];
                    var img=data.results[0].series[0].values[0][1];
                    var lp=data.results[0].series[0].values[0][3];
                    let UTCTimeObj = new Date(time=time+'z');
-                   document.getElementById("inter-time").innerHTML = UTCTimeObj.toLocaleString();
-                   document.getElementById('inter-img').src =' http://192.168.5.53:8001/result?filename='+img;
-                   document.getElementById("inter-lp").innerHTML = lp;
+                   document.getElementById("outer-time").innerHTML = UTCTimeObj.toLocaleString();
+                   document.getElementById('outer-img').src =' http://192.168.5.53:8001/result?filename='+img;
+                   document.getElementById("outer-lp").innerHTML = lp;
                },
                 complete: function () {
                     // Schedule the next
@@ -186,7 +186,27 @@
                 }
             });
         };
-        getplate();
+
+        var getoutplate=function(){
+            $.ajax({
+                url: 'http://192.168.5.17:8086/query?q=select+last(plate)%2C*+from+%22out%22&db=NCUT_MM&pretty=true',
+                success:function (data) {
+                    var time=data.results[0].series[0].values[0][0].split(".")[0];
+                    var img=data.results[0].series[0].values[0][1];
+                    var lp=data.results[0].series[0].values[0][3];
+                    let UTCTimeObj = new Date(time=time+'z');
+                    document.getElementById("inter-time").innerHTML = UTCTimeObj.toLocaleString();
+                    document.getElementById('inter-img').src =' http://192.168.5.53:8001/result?filename='+img;
+                    document.getElementById("inter-lp").innerHTML = lp;
+                },
+                complete: function () {
+                    // Schedule the next
+                    setTimeout(getplate, interval);
+                }
+            });
+        };
+        getinplate();
+        getoutplate();
 </script>
     <script>
         // let UTCTime = '2019-03-26T07:25:06z';                  // 從 DB 拿回來的 UTC/ISO 時間
