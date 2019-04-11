@@ -36,7 +36,7 @@
                     <div class="tm-notification-items">
                         @foreach($lps as $lp)
                         <div class="media tm-notification-item-dark">
-                            <div class="tm-gray-circle"><img src="{{ asset('img/car/'.$lp->id.'.jpeg') }}" alt="Avatar Image" class="rounded-circle" width="80px" height="80px"></div>
+                            <div class="tm-gray-circle"><img src="http://192.168.5.53:8001/car?filename={{ $lp->LP }}.jpg" alt="Avatar Image" class="rounded-circle" width="80px" height="80px"></div>
                             <div class="media-body">
                                 <p class="mb-2">{{ $lp->LP }}</p>
                                 <span class="tm-small tm-text-color-secondary">{{ $lp->status }}</span>
