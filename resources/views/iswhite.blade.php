@@ -91,6 +91,14 @@
                  other_span.classList.remove('text-primary');
              }
         }
+        // change event
+        function lpsonchange(){
+            var text=document.getElementById("Lps").value.toUpperCase();
+            if (text == '' || text == undefined || text == null){
+                ajaxget();
+            }
+        }
+        
         function find(id) {
             var text=document.getElementById("Lps").value.toUpperCase();
             if (text == '' || text == undefined || text == null){
@@ -116,7 +124,7 @@
             <div class="col-4"></div>
         <div class="col-4">
             <div class="input-group mb-3" style="margin-top: 30px">
-                <input id="Lps" type="text" class="form-control text-uppercase" placeholder="車牌號碼" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input id="Lps" type="text" onchange="lpsonchange()" class="form-control text-uppercase" placeholder="車牌號碼" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2" onclick="find('search')">搜尋車牌</span>
                 </div>
