@@ -18,7 +18,9 @@
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
 	-->
-    <link href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/video.js/6.6.2/video-js.min.css')}}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.6.2/video-js.min.css" rel="stylesheet">
+    {{--<link href="//vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">--}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.6.2/video.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.6.2/ie8/videojs-ie8.min.js"></script>
     <!-- videojs-flash -->
@@ -26,8 +28,8 @@
     <script>
         videojs.options.flash.swf = "https://cdnjs.cloudflare.com/ajax/libs/video.js/6.6.2/video-js.swf"
     </script>
-    <style type="text/css">/* Chart.js */
-        @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+
+
 </head>
 <body id="{{ $body }}">
 @include('layout.navbar')

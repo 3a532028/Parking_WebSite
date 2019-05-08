@@ -47,35 +47,35 @@
                 </div>
             </div>
 
-            <div class="col-12 tm-block-col">
-                <div class="tm-bg-primary-black tm-block tm-block-taller tm-block-scroll">
-                    <h2 class="tm-block-title">車輛管理</h2>
-                    <table class="table table-dark">
-                        <thead>
-                        <tr>
-                            <th scope="col">車牌號碼</th>
-                            <th scope="col">最近進入時間</th>
-                            <th scope="col">最後離開時間</th>
-                            <th scope="col">狀態</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($lps as $lp)
-                        <tr>
-                            <th scope="row"><b>{{ $lp->LP }}</b></th>
-                            <td>
+            {{--<div class="col-12 tm-block-col">--}}
+                {{--<div class="tm-bg-primary-black tm-block tm-block-taller tm-block-scroll">--}}
+                    {{--<h2 class="tm-block-title">車輛管理</h2>--}}
+                    {{--<table class="table table-dark">--}}
+                        {{--<thead>--}}
+                        {{--<tr>--}}
+                            {{--<th scope="col">車牌號碼</th>--}}
+                            {{--<th scope="col">最近進入時間</th>--}}
+                            {{--<th scope="col">最後離開時間</th>--}}
+                            {{--<th scope="col">狀態</th>--}}
+                        {{--</tr>--}}
+                        {{--</thead>--}}
+                        {{--<tbody>--}}
+                        {{--@foreach($lps as $lp)--}}
+                        {{--<tr>--}}
+                            {{--<th scope="row"><b>{{ $lp->LP }}</b></th>--}}
+                            {{--<td>--}}
                                 {{--<div class="tm-status-circle cancelled">--}}
                                 {{--</div>Moving--}}
-                                {{ $lp->enter_t }}
-                            </td>
-                            <td><b>{{ $lp->out_t }}</b></td>
-                            <td><b>{{ $lp->status }}</b></td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                                {{--{{ $lp->enter_t }}--}}
+                            {{--</td>--}}
+                            {{--<td><b>{{ $lp->out_t }}</b></td>--}}
+                            {{--<td><b>{{ $lp->status }}</b></td>--}}
+                        {{--</tr>--}}
+                        {{--@endforeach--}}
+                        {{--</tbody>--}}
+                    {{--</table>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
             <div class="col-12 tm-block-col">
                 <div class="tm-bg-primary-black tm-block tm-block-taller tm-block-scroll">
@@ -142,11 +142,11 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('js/moment.min.js') }}"></script>
-<!-- https://momentjs.com/ -->
-<script src="{{ asset('js/Chart.min.js') }}"></script>
-<!-- http://www.chartjs.org/docs/latest/ -->
-<script src="{{ asset('js/tooplate-scripts.js') }}"></script>
+{{--<script src="{{ asset('js/moment.min.js') }}"></script>--}}
+{{--<!-- https://momentjs.com/ -->--}}
+{{--<script src="{{ asset('js/Chart.min.js') }}"></script>--}}
+{{--<!-- http://www.chartjs.org/docs/latest/ -->--}}
+{{--<script src="{{ asset('js/tooplate-scripts.js') }}"></script>--}}
 <script>
     document.body.style.background = '#090909';
 
@@ -176,13 +176,13 @@
                    var img=data.results[0].series[0].values[0][1];
                    var lp=data.results[0].series[0].values[0][3];
                    let UTCTimeObj = new Date(time=time+'z');
-                   document.getElementById("outer-time").innerHTML = UTCTimeObj.toLocaleString();
-                   document.getElementById('outer-img').src =' http://192.168.5.53:8001/result?filename='+img;
-                   document.getElementById("outer-lp").innerHTML = lp;
+                   document.getElementById("inter-time").innerHTML = UTCTimeObj.toLocaleString();
+                   document.getElementById('inter-img').src =' http://192.168.5.53:8001/result?filename='+img;
+                   document.getElementById("inter-lp").innerHTML = lp;
                },
                 complete: function () {
                     // Schedule the next
-                    setTimeout(getplate, interval);
+                    setTimeout(getinplate, interval);
                 }
             });
         };
@@ -195,13 +195,13 @@
                     var img=data.results[0].series[0].values[0][1];
                     var lp=data.results[0].series[0].values[0][3];
                     let UTCTimeObj = new Date(time=time+'z');
-                    document.getElementById("inter-time").innerHTML = UTCTimeObj.toLocaleString();
-                    document.getElementById('inter-img').src =' http://192.168.5.53:8001/result?filename='+img;
-                    document.getElementById("inter-lp").innerHTML = lp;
+                    document.getElementById("outer-time").innerHTML = UTCTimeObj.toLocaleString();
+                    document.getElementById('outer-img').src =' http://192.168.5.53:8001/result?filename='+img;
+                    document.getElementById("outer-lp").innerHTML = lp;
                 },
                 complete: function () {
                     // Schedule the next
-                    setTimeout(getplate, interval);
+                    setTimeout(getoutplate, interval);
                 }
             });
         };

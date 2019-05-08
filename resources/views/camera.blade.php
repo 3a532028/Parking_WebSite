@@ -20,12 +20,12 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <button class="btn btn-primary btn-block text-uppercase rounded" onclick="ShowArea0()">
-                                Camera 1
+                                入口
                             </button>
                         </div>
                         <div class="col-sm-4">
                             <button class="btn btn-primary btn-block text-uppercase rounded"onclick="ShowArea1()">
-                                Camera 2
+                                出口
                             </button>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     <br>
                     <div class="embed-responsive embed-responsive-4by3">
                         <video id="my-video" class="video-js embed-responsive-item" data-setup='{ "autoplay" : true , "controls" : "true" , "poster" : "true" , "preload" : "auto"  }'>
-                            <source  id = "url" src = "rtmp://192.168.5.200:1935/live/txg0_0"  type='rtmp/flv'>
+                            <source  id = "url" src = "rtmp://192.168.5.17:1935/live/in"  type='rtmp/flv'>
 
                             <p class="vjs-no-js">
                                 <!-- 如果使用者不支援JavaScript，顯示這段-->
@@ -103,10 +103,10 @@
 @endsection
 
 @section('script')
-    <script src="asset{{'js/jquery-3.3.1.min.js'}}"></script>
-    <!-- https://jquery.com/download/ -->
-    <script src="assect{{'js/bootstrap.min.js'}}"></script>
-    <!-- https://getbootstrap.com/ -->
+    {{--<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>--}}
+    {{--<!-- https://jquery.com/download/ -->--}}
+    {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
+    {{--<!-- https://getbootstrap.com/ -->--}}
     <script>
         $(function() {
             $(".tm-product-name").on("click", function() {
@@ -140,13 +140,13 @@
             document.getElementById("AreaBox").innerHTML='入口';
             document.getElementById("RtmpName").innerHTML='Rtmp-Play0';
             // document.getElementById("video-src").src="aaa";
-            var src ='https://3geauymtsgrzdrcbzfahur.ourdvsss.com/video-ws-kk.lv-play.com/obslive/2477024G39750Gs3N_s2.flv?wshc_tag=1&wsts_tag=5c94c592&wsid_tag=786c19fa&wsiphost=ipdbm' ;
+            var src ='rtmp://192.168.5.17:1935/live/in' ;
             change(src);
         }
         function ShowArea1(){
-            document.getElementById("AreaBox").innerHTML='中島上';
+            document.getElementById("AreaBox").innerHTML='出口';
             document.getElementById("RtmpName").innerHTML='Rtmp-Play1';
-            var src ='rtmp://192.168.5.200:1935/live/rd0_1';
+            var src ='rtmp://192.168.5.17:1935/live/out';
             change(src);
         }
         function ShowArea2(){
@@ -160,7 +160,7 @@
         function processFormData() {
             var name_element = document.getElementById('src');
             var src = name_element.value;
-            // alert('你的網址是' + src);
+            alert('你的網址是' + src);
             change(src);
         }
     </script>
@@ -199,4 +199,6 @@
         };
         getplate();
     </script>
+
+
 @endsection
