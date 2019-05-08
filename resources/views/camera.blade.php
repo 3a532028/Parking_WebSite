@@ -179,6 +179,7 @@
             let player=videojs("my-video");
             player.src("rtmp://192.168.5.17:1935/live/in");
             player.play();
+            stream="inter";
         }
         function outer_stream() {
             document.getElementById("AreaBox").innerHTML='出口';
