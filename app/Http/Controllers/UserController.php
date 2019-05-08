@@ -71,4 +71,10 @@ class UserController extends Controller
             return view('account',['body'=>'account','title' => 'account','msg'=>$request->ID.'新增成功!!']);
         }
     }
+
+    public function free_parking_space()
+    {
+        $lps=Lps::where('status','已進場')->get();
+        return 110-count($lps);
+    }
 }

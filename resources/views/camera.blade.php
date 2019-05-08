@@ -19,12 +19,12 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <button class="btn btn-primary btn-block text-uppercase rounded" onclick="ShowArea0()">
+                            <button class="btn btn-primary btn-block text-uppercase rounded" onclick="inter_stream()">
                                 入口
                             </button>
                         </div>
                         <div class="col-sm-4">
-                            <button class="btn btn-primary btn-block text-uppercase rounded"onclick="ShowArea1()">
+                            <button class="btn btn-primary btn-block text-uppercase rounded" onclick="outer_stream()">
                                 出口
                             </button>
                         </div>
@@ -43,7 +43,7 @@
                         </video>
                     </div>
 
-                    <h3 id="AreaBox" class ='font-weight-bold col-6'></h3>
+                    <h3 id="AreaBox" class ='font-weight-bold col-6'>入口</h3>
                     <br>
                 </div>
             </div>
@@ -69,23 +69,23 @@
                                 <p class = 'font-weight-bold'>車牌影像：</p>
                                 {{--<small class="text-muted">123</small>--}}
                                 <td>
-                                    <img  style="width: 70%" id="inter-img" src="">
+                                    <img  style="width: 70%" id="img" src="">
                                 </td>
                                 <hr>
                                 <p class = 'font-weight-bold t'>車牌字符：</p>
                                 {{--<small class="text-muted text-center">456</small>--}}
                                 <td >
-                                    <p id="inter-lp">lp</p>
+                                    <p id="lp">lp</p>
                                 </td>
                                 <hr>
                                 <p class = 'font-weight-bold'>時間：</p>
                                 {{--<small class="text-muted">789</small>--}}
                                 <th scope="row">
-                                    <p id ='inter-time'>time</p>
+                                    <p id ='time'>time</p>
                                 </th>
                                 <hr>
                                 <p class = 'font-weight-bold'>管院車輛剩餘：</p>
-                                <div class="alert alert-info"style="font-size: 40px;text-align: center;margin: 30px" role="alert">
+                                <div id="free-parking-space" class="alert alert-info"style="font-size: 40px;text-align: center;margin: 30px" role="alert">
                                     {{$Cars}}
                                 </div>
                             </div>
@@ -98,8 +98,8 @@
             </div>
         </div>
     </div>
-    <th scope="col">{{ $columns }}</th>
-    <th scope="col">{{ $values }}</th>
+    {{--<th scope="col">{{ $columns }}</th>--}}
+    {{--<th scope="col">{{ $values }}</th>--}}
 @endsection
 
 @section('script')
@@ -114,91 +114,89 @@
             });
         });
     </script>
-
+    {{--自動更新 辨識結果 剩餘車位數--}}
     <script>
-        var videoPlayer = videojs( "my-video" );
-        function play()
-        {
-            videoPlayer.play(); // 播放
-        }
-        function pause()
-        {
-            videoPlayer.pause(); // 暫停
-        }
-        function mute()
-        {
-            videoPlayer.muted( true ); // 靜音
-        }
-        function change(src) {
-            // alert(src)
-            videoPlayer.src(src);  //重置video的src
-            videoPlayer.load(src);  //使video重新加载
-        }
+        var stream="inter";
+        var interval=1000;
+        var getplate = function(){
+            if (stream === "inter"){
+                $.ajax({
+                    url: 'http://192.168.5.17:8086/query?q=select+last(plate)%2C*+from+%22in%22&db=NCUT_MM&pretty=true',
+                    success:function (data) {
+                        var time=data.results[0].series[0].values[0][0].split(".")[0];
+                        var img=data.results[0].series[0].values[0][1];
+                        var lp=data.results[0].series[0].values[0][3];
+                        let UTCTimeObj = new Date(time=time+'z');
+                        document.getElementById("time").innerHTML = UTCTimeObj.toLocaleString();
+                        document.getElementById('img').src='http://192.168.5.53:8001/result?filename='+img;
+                        document.getElementById("lp").innerHTML = lp;
+                    },
+                    complete: function () {
+                        // Schedule the next
+                        setTimeout(getplate, interval);
+                    }
+                });
+            }else if (stream === "outer"){
+                $.ajax({
+                    url: 'http://192.168.5.17:8086/query?q=select+last(plate)%2C*+from+%22out%22&db=NCUT_MM&pretty=true',
+                    success:function (data) {
+                        var time=data.results[0].series[0].values[0][0].split(".")[0];
+                        var img=data.results[0].series[0].values[0][1];
+                        var lp=data.results[0].series[0].values[0][3];
+                        let UTCTimeObj = new Date(time=time+'z');
+                        document.getElementById("time").innerHTML = UTCTimeObj.toLocaleString();
+                        document.getElementById('img').src =' http://192.168.5.53:8001/result?filename='+img;
+                        document.getElementById("lp").innerHTML = lp;
+                    },
+                    complete: function () {
+                        // Schedule the next
+                        setTimeout(getplate, interval);
+                    }
+                });
+            }
+
+        };
+        var freespace=function(){
+            $.ajax({
+                url: '/free/parking/space',
+                success:function (data) {
+                    document.getElementById("free-parking-space").innerText=data;
+                },
+                complete: function () {
+                    // Schedule the next
+                    setTimeout(freespace, interval);
+                }
+            });
+        };
+        freespace();
+        getplate();
     </script>
-    <script type="text/javascript">
-        function ShowArea0(){
+    {{--串流切換--}}
+    <script>
+        function inter_stream() {
             document.getElementById("AreaBox").innerHTML='入口';
             document.getElementById("RtmpName").innerHTML='Rtmp-Play0';
-            // document.getElementById("video-src").src="aaa";
-            var src ='rtmp://192.168.5.17:1935/live/in' ;
-            change(src);
+            let player=videojs("my-video");
+            player.src("rtmp://192.168.5.17:1935/live/in");
+            player.play();
         }
-        function ShowArea1(){
+        function outer_stream() {
             document.getElementById("AreaBox").innerHTML='出口';
             document.getElementById("RtmpName").innerHTML='Rtmp-Play1';
-            var src ='rtmp://192.168.5.17:1935/live/out';
-            change(src);
+            let player=videojs("my-video");
+            player.src("rtmp://192.168.5.17:1935/live/out");
+            player.play();
+            stream="outer";
         }
-        function ShowArea2(){
-            document.getElementById("AreaBox").innerHTML='左邊草叢';
-            document.getElementById("RtmpName").innerHTML='Rtmp-Play2';
-            var src ='http://192.168.5.200:8080/live/rd0_0.flv';
-            change(src);
-        }
-    </script>
-    <script>
         function processFormData() {
+            document.getElementById("AreaBox").innerHTML='自定義';
+            document.getElementById("RtmpName").innerHTML='Rtmp-Play2';
             var name_element = document.getElementById('src');
             var src = name_element.value;
             alert('你的網址是' + src);
-            change(src);
+            let player=videojs("my-video");
+            player.src(src);
+            player.play();
         }
     </script>
-    <script>
-        var interval=1000;
-        var doAjax = function() {
-            $.ajax({
-                url: 'http://192.168.5.17:8086/query?q=select+last(%22plate%22)+from+%22test%22&db=LP&pretty=true',
-                success: function(data){
-                    document.getElementById("inter-time").innerHTML=data.results[0].series[0].values[0][0];
-                    document.getElementById("inter-lp").innerHTML=data.results[0].series[0].values[0][1];
-                },
-                complete: function () {
-                    // Schedule the next
-                    setTimeout(doAjax, interval);
-                }
-            });
-        };
-
-        var getplate = function(){
-            $.ajax({
-                url: 'http://192.168.5.17:8086/query?q=select+last(plate)%2C*+from+%22result%22&db=mydb&pretty=true',
-                success:function (data) {
-                    var time=data.results[0].series[0].values[0][0];
-                    var img=data.results[0].series[0].values[0][1];
-                    var lp = data.results[0].series[0].values[0][3];
-                     document.getElementById("inter-time").innerHTML=time.split(".")[0];
-                    document.getElementById('inter-img').src='http://192.168.5.53:8001/result?filename='+img;
-                    document.getElementById("inter-lp").innerHTML = lp;
-                },
-                complete: function () {
-                    // Schedule the next
-                    setTimeout(getplate, interval);
-                }
-            });
-        };
-        getplate();
-    </script>
-
-
 @endsection

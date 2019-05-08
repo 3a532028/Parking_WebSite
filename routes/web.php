@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'],function (){
 
     Route::get('/account','UserController@account_index')->name('account');
     Route::post('/account','UserController@insert');
+
+    Route::get('/free/parking/space','UserController@free_parking_space');
 });
 
 // login
